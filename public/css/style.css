@@ -1,0 +1,13 @@
+body {
+	background-image: url("/images/catburg.gif");
+	text-align: center;
+}
+
+.burgerstuff {
+	background-color: white;
+	padding: 50px;
+	max-width: 400px;
+	position: absolute;
+	left:30%;
+	margin: 30px;
+}
