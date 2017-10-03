@@ -20,12 +20,13 @@ function objToSql(ob) {
 
 
 var orm = {
-    select: function(whatToSelect, tableInput) {
-        var queryString = "SELECT ?? FROM ??";
-        connection.query(queryString, [whatToSelect, tableInput], function(err, result) {
+    selectAll: function(tableInput,cb) {
+        var queryString = "SELECT * FROM ??";
+        connection.query(queryString, [tableInput], function(err, result) {
             if (err) {
                 throw err;
             }
+            cb(result);
             console.log(result);
         });
     },
@@ -46,12 +47,12 @@ var orm = {
         });
     },
     // An example of objColVals would be {name: panther, sleepy: true}
-    update: function(table, objColVals, condition, cb) {
+    update: function(table, objColVals, consumed, cb) {
         var queryString = "UPDATE " + table;
         queryString += " SET ";
         queryString += objToSql(objColVals);
         queryString += " WHERE ";
-        queryString += condition;
+        queryString += consumed;
         console.log(queryString);
         connection.query(queryString, function(err, result) {
             if (err) {
