@@ -6,6 +6,7 @@ var port = process.env.PORT || 3000;
 var app = express();
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
+
 // Set body-parser middleware to handle forms and json data
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
